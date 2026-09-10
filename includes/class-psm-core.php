@@ -31,6 +31,13 @@ final class PSM_Core {
 	private $scanner;
 
 	/**
+	 * Rules data service.
+	 *
+	 * @var PSM_Rules
+	 */
+	private $rules;
+
+	/**
 	 * Get the shared core instance.
 	 *
 	 * @return PSM_Core
@@ -48,6 +55,7 @@ final class PSM_Core {
 	 */
 	private function __construct() {
 		$this->scanner = new PSM_Scanner();
+		$this->rules   = new PSM_Rules();
 		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 	}
 
