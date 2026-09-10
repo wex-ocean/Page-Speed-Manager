@@ -52,6 +52,20 @@ final class PSM_Core {
 	private $cleanup;
 
 	/**
+	 * Admin controller instance.
+	 *
+	 * @var PSM_Admin
+	 */
+	private $admin;
+
+	/**
+	 * AJAX controller instance.
+	 *
+	 * @var PSM_Ajax
+	 */
+	private $ajax;
+
+	/**
 	 * Get the shared core instance.
 	 *
 	 * @return PSM_Core
@@ -72,7 +86,36 @@ final class PSM_Core {
 		$this->rules   = new PSM_Rules();
 		$this->optimizer = new PSM_Optimizer( $this->rules );
 		$this->cleanup = new PSM_Cleanup();
+		$this->admin   = new PSM_Admin( $this->rules, $this->scanner, $this->cleanup );
+		$this->ajax    = new PSM_Ajax( $this->rules, $this->cleanup );
 		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+	}
+
+	/**
+	 * Get the rules service.
+	 *
+	 * @return PSM_Rules
+	 */
+	public function get_rules() {
+		return $this->rules;
+	}
+
+	/**
+	 * Get the scanner service.
+	 *
+	 * @return PSM_Scanner
+	 */
+	public function get_scanner() {
+		return $this->scanner;
+	}
+
+	/**
+	 * Get the cleanup service.
+	 *
+	 * @return PSM_Cleanup
+	 */
+	public function get_cleanup() {
+		return $this->cleanup;
 	}
 
 	/**

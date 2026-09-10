@@ -61,6 +61,21 @@ final class PSM_Rules {
 	}
 
 	/**
+	 * Replace the global disable rules.
+	 *
+	 * @param string[] $handles Asset handles.
+	 * @return string[]
+	 */
+	public function save_global_rules( $handles ) {
+		$handles = $this->normalize_handles( $handles );
+		$handles = array_values( array_diff( $handles, PSM_Whitelist::get_handles() ) );
+
+		update_option( self::GLOBAL_OPTION, $handles, false );
+
+		return $handles;
+	}
+
+	/**
 	 * Get globally deferred handles.
 	 *
 	 * @return string[]
@@ -85,6 +100,21 @@ final class PSM_Rules {
 	 */
 	public function get_exclusion_rules() {
 		return $this->get_option_handles( self::EXCLUDE_OPTION );
+	}
+
+	/**
+	 * Replace the global safe-exclusion rules.
+	 *
+	 * @param string[] $handles Asset handles.
+	 * @return string[]
+	 */
+	public function save_exclusion_rules( $handles ) {
+		$handles = $this->normalize_handles( $handles );
+		$handles = array_values( array_diff( $handles, PSM_Whitelist::get_handles() ) );
+
+		update_option( self::EXCLUDE_OPTION, $handles, false );
+
+		return $handles;
 	}
 
 	/**
