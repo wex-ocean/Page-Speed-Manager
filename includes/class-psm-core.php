@@ -45,6 +45,13 @@ final class PSM_Core {
 	private $optimizer;
 
 	/**
+	 * Feature cleanup instance.
+	 *
+	 * @var PSM_Cleanup
+	 */
+	private $cleanup;
+
+	/**
 	 * Get the shared core instance.
 	 *
 	 * @return PSM_Core
@@ -64,6 +71,7 @@ final class PSM_Core {
 		$this->scanner = new PSM_Scanner();
 		$this->rules   = new PSM_Rules();
 		$this->optimizer = new PSM_Optimizer( $this->rules );
+		$this->cleanup = new PSM_Cleanup();
 		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 	}
 
