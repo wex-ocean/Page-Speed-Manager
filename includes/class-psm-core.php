@@ -24,6 +24,13 @@ final class PSM_Core {
 	private static $instance = null;
 
 	/**
+	 * Asset scanner instance.
+	 *
+	 * @var PSM_Scanner
+	 */
+	private $scanner;
+
+	/**
 	 * Get the shared core instance.
 	 *
 	 * @return PSM_Core
@@ -40,6 +47,7 @@ final class PSM_Core {
 	 * Register core hooks.
 	 */
 	private function __construct() {
+		$this->scanner = new PSM_Scanner();
 		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 	}
 

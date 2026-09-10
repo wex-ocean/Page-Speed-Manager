@@ -41,6 +41,7 @@ function psm_autoload( $class_name ) {
 	}
 
 	$class_name = substr( $class_name, strlen( $namespace ) );
+	$class_name = preg_replace( '/^PSM_/', '', $class_name );
 	$class_name = strtolower( str_replace( '\\', '-', $class_name ) );
 	$file      = PSM_DIR . 'includes/class-psm-' . $class_name . '.php';
 
