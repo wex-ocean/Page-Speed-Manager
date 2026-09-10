@@ -38,6 +38,13 @@ final class PSM_Core {
 	private $rules;
 
 	/**
+	 * Runtime optimizer instance.
+	 *
+	 * @var PSM_Optimizer
+	 */
+	private $optimizer;
+
+	/**
 	 * Get the shared core instance.
 	 *
 	 * @return PSM_Core
@@ -56,6 +63,7 @@ final class PSM_Core {
 	private function __construct() {
 		$this->scanner = new PSM_Scanner();
 		$this->rules   = new PSM_Rules();
+		$this->optimizer = new PSM_Optimizer( $this->rules );
 		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 	}
 

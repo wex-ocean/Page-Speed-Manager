@@ -31,12 +31,60 @@ final class PSM_Rules {
 	const POST_META_KEY = '_psm_disabled_handles';
 
 	/**
+	 * Option name for globally deferred handles.
+	 *
+	 * @var string
+	 */
+	const DEFER_OPTION = 'psm_defer_handles';
+
+	/**
+	 * Option name for globally delayed handles.
+	 *
+	 * @var string
+	 */
+	const DELAY_OPTION = 'psm_delay_handles';
+
+	/**
+	 * Option name for globally excluded handles.
+	 *
+	 * @var string
+	 */
+	const EXCLUDE_OPTION = 'psm_excluded_handles';
+
+	/**
 	 * Get global disable rules.
 	 *
 	 * @return string[]
 	 */
 	public function get_global_rules() {
 		return $this->normalize_handles( get_option( self::GLOBAL_OPTION, array() ) );
+	}
+
+	/**
+	 * Get globally deferred handles.
+	 *
+	 * @return string[]
+	 */
+	public function get_defer_rules() {
+		return $this->get_option_handles( self::DEFER_OPTION );
+	}
+
+	/**
+	 * Get globally delayed handles.
+	 *
+	 * @return string[]
+	 */
+	public function get_delay_rules() {
+		return $this->get_option_handles( self::DELAY_OPTION );
+	}
+
+	/**
+	 * Get globally excluded handles.
+	 *
+	 * @return string[]
+	 */
+	public function get_exclusion_rules() {
+		return $this->get_option_handles( self::EXCLUDE_OPTION );
 	}
 
 	/**
@@ -197,6 +245,18 @@ final class PSM_Rules {
 		$handles = array_filter( $handles );
 
 		return array_values( array_unique( $handles ) );
+	}
+
+	/**
+	 * Read and normalize a handle option.
+	 *
+	 * @param string $option_name Option name.
+	 * @return string[]
+	 */
+	private function get_option_handles( $option_name ) {
+		$handles = $this->normalize_handles( get_option( $option_name, array() ) );
+
+		return array_values( array_diff( $handles, PSM_Whitelist::get_handles() ) );
 	}
 
 	/**
