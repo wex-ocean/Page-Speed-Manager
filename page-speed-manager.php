@@ -4,8 +4,8 @@
  * Plugin URI:        https://wordpress.org/plugins/page-speed-manager/
  * Description:       Selectively manage page assets and lightweight WordPress features for better performance.
  * Version:           0.1.0
- * Author:            Page Speed Manager Contributors
- * Author URI:        https://wordpress.org/
+ * Author:            DEV OCEEAN
+ * Author URI:        https://oceean.dev/
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       page-speed-manager

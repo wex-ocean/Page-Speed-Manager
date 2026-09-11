@@ -47,6 +47,7 @@ final class PSM_Scanner {
 		$data    = array(
 			'page_id'    => $page_id,
 			'scanned_at' => time(),
+			'compat'     => PSM_Compat::get_context(),
 			'scripts'    => $this->get_enqueued_assets( $scripts ),
 			'styles'     => $this->get_enqueued_assets( $styles ),
 		);
@@ -108,12 +109,14 @@ final class PSM_Scanner {
 			}
 
 			$src = isset( $registered->src ) ? (string) $registered->src : '';
+			$owner = $this->map_owner( $src );
 
 			$assets[] = array(
 				'handle'       => (string) $handle,
 				'src'          => $src,
 				'dependencies' => isset( $registered->deps ) ? array_values( (array) $registered->deps ) : array(),
-				'owner'        => $this->map_owner( $src ),
+				'owner'        => $owner,
+				'sensitive'    => PSM_Compat::is_sensitive_asset( $handle, $owner ),
 			);
 		}
 

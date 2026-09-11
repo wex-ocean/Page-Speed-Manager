@@ -66,6 +66,13 @@ final class PSM_Core {
 	private $ajax;
 
 	/**
+	 * Compatibility service instance.
+	 *
+	 * @var PSM_Compat
+	 */
+	private $compat;
+
+	/**
 	 * Get the shared core instance.
 	 *
 	 * @return PSM_Core
@@ -82,6 +89,7 @@ final class PSM_Core {
 	 * Register core hooks.
 	 */
 	private function __construct() {
+		$this->compat = new PSM_Compat();
 		$this->scanner = new PSM_Scanner();
 		$this->rules   = new PSM_Rules();
 		$this->optimizer = new PSM_Optimizer( $this->rules );

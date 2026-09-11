@@ -49,7 +49,7 @@ final class PSM_Optimizer {
 	 * @return void
 	 */
 	public function enforce_rules() {
-		if ( $this->should_bypass() ) {
+		if ( PSM_Compat::should_bypass() ) {
 			return;
 		}
 
@@ -76,7 +76,7 @@ final class PSM_Optimizer {
 	 * @return string
 	 */
 	public function filter_script_tag( $tag, $handle, $src ) {
-		if ( $this->should_bypass() || PSM_Whitelist::contains( $handle ) ) {
+		if ( PSM_Compat::should_bypass() || PSM_Whitelist::contains( $handle ) ) {
 			return $tag;
 		}
 
@@ -106,7 +106,7 @@ final class PSM_Optimizer {
 	 * @return void
 	 */
 	public function print_delay_loader() {
-		if ( $this->should_bypass() || empty( $this->delayed_handles ) ) {
+		if ( PSM_Compat::should_bypass() || empty( $this->delayed_handles ) ) {
 			return;
 		}
 		?>
@@ -130,25 +130,6 @@ final class PSM_Optimizer {
 	}
 
 	/**
-	 * Determine whether all optimizations must be bypassed.
-	 *
-	 * @return bool
-	 */
-	private function should_bypass() {
-		if ( is_admin() || is_customize_preview() ) {
-			return true;
-		}
-
-		if ( isset( $_GET['elementor-preview'] ) ) {
-			return true;
-		}
-
-		return class_exists( '\Elementor\Plugin' )
-			&& isset( \Elementor\Plugin::$instance->editor )
-			&& method_exists( \Elementor\Plugin::$instance->editor, 'is_edit_mode' )
-			&& \Elementor\Plugin::$instance->editor->is_edit_mode();
-	}
-
 	/**
 	 * Get global and current-page disabled handles.
 	 *
