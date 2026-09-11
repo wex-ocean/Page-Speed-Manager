@@ -130,7 +130,6 @@ final class PSM_Optimizer {
 	}
 
 	/**
-	/**
 	 * Get global and current-page disabled handles.
 	 *
 	 * @return string[]

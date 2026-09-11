@@ -74,7 +74,7 @@ final class PSM_Cleanup {
 
 		$settings = array_merge( $defaults, $settings );
 
-		foreach ( $defaults as $key => $default ) {
+		foreach ( array_keys( $defaults ) as $key ) {
 			$settings[ $key ] = ! empty( $settings[ $key ] );
 		}
 

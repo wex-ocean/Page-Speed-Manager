@@ -55,8 +55,18 @@ $post_rules    = $selected_post ? $rules->get_post_rules( $post_id ) : array();
 					<?php foreach ( array( 'scripts' => __( 'Scripts', 'page-speed-manager' ), 'styles' => __( 'Styles', 'page-speed-manager' ) ) as $asset_type => $asset_label ) : ?>
 						<h3 class="psm-asset-heading"><?php echo esc_html( $asset_label ); ?></h3>
 						<div class="psm-asset-list">
-							<?php foreach ( (array) $scan[ $asset_type ] as $asset ) : $handle = sanitize_key( $asset['handle'] ); $protected = \PageSpeedManager\PSM_Whitelist::contains( $handle ); ?>
-								<label class="psm-asset-row"><input class="psm-rule-toggle" type="checkbox" data-action="psm_save_post_rule" data-post-id="<?php echo esc_attr( $post_id ); ?>" data-handle="<?php echo esc_attr( $handle ); ?>" <?php checked( in_array( $handle, $post_rules, true ) ); disabled( $protected ); ?>><span class="psm-asset-main"><strong><?php echo esc_html( $handle ); ?></strong><small><?php echo esc_html( $asset['owner']['type'] . ( $asset['owner']['name'] ? ' / ' . $asset['owner']['name'] : '' ) ); ?></small></span><code><?php echo esc_html( $asset['src'] ); ?></code></label>
+							<?php $assets = isset( $scan[ $asset_type ] ) && is_array( $scan[ $asset_type ] ) ? $scan[ $asset_type ] : array(); ?>
+							<?php foreach ( $assets as $asset ) : ?>
+								<?php
+								$asset_handle = isset( $asset['handle'] ) ? sanitize_key( $asset['handle'] ) : '';
+								$asset_src    = isset( $asset['src'] ) ? (string) $asset['src'] : '';
+								$asset_owner  = isset( $asset['owner'] ) && is_array( $asset['owner'] ) ? $asset['owner'] : array();
+								$owner_type   = isset( $asset_owner['type'] ) ? sanitize_key( $asset_owner['type'] ) : '';
+								$owner_name   = isset( $asset_owner['name'] ) ? sanitize_text_field( $asset_owner['name'] ) : '';
+								$owner_label  = $owner_name ? $owner_type . ' / ' . $owner_name : $owner_type;
+								$protected    = \PageSpeedManager\PSM_Whitelist::contains( $asset_handle );
+								?>
+								<label class="psm-asset-row"><input class="psm-rule-toggle" type="checkbox" data-action="psm_save_post_rule" data-post-id="<?php echo esc_attr( $post_id ); ?>" data-handle="<?php echo esc_attr( $asset_handle ); ?>" <?php checked( in_array( $asset_handle, $post_rules, true ) ); ?> <?php disabled( $protected ); ?>><span class="psm-asset-main"><strong><?php echo esc_html( $asset_handle ); ?></strong><small><?php echo esc_html( $owner_label ); ?></small></span><code><?php echo esc_html( $asset_src ); ?></code></label>
 							<?php endforeach; ?>
 						</div>
 					<?php endforeach; ?>

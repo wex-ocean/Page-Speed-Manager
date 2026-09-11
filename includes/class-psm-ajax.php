@@ -25,7 +25,7 @@ final class PSM_Ajax {
 
 	/**
 	 * Cleanup service.
-	*
+	 *
 	 * @var PSM_Cleanup
 	 */
 	private $cleanup;
@@ -67,7 +67,7 @@ final class PSM_Ajax {
 		$this->authorize();
 		$post_id = isset( $_POST['post_id'] ) ? absint( $_POST['post_id'] ) : 0;
 		$handle  = isset( $_POST['handle'] ) ? sanitize_key( wp_unslash( $_POST['handle'] ) ) : '';
-		$enabled = ! empty( $_POST['enabled'] );
+		$enabled = isset( $_POST['enabled'] ) && '1' === sanitize_key( wp_unslash( $_POST['enabled'] ) );
 		$result  = $enabled
 			? $this->rules->add_post_rule( $post_id, $handle )
 			: $this->rules->remove_post_rule( $post_id, $handle );
@@ -99,7 +99,7 @@ final class PSM_Ajax {
 	public function save_cleanup() {
 		$this->authorize();
 		$defaults = PSM_Cleanup::get_defaults();
-		$posted   = isset( $_POST['settings'] ) && is_array( $_POST['settings'] )
+		$posted = isset( $_POST['settings'] ) && is_array( $_POST['settings'] )
 			? wp_unslash( $_POST['settings'] )
 			: array();
 		$settings = array();

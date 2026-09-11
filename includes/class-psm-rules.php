@@ -139,7 +139,7 @@ final class PSM_Rules {
 
 	/**
 	 * Remove a global disable rule.
-	*
+	 *
 	 * @param string $handle Asset handle.
 	 * @return bool
 	 */
@@ -219,8 +219,8 @@ final class PSM_Rules {
 	 * @return string[]
 	 */
 	public function get_dependents( $handle ) {
-		$handle     = sanitize_key( $handle );
-		$dependents = array();
+		$handle      = sanitize_key( $handle );
+		$dependents  = array();
 		$collections = array( wp_scripts(), wp_styles() );
 
 		foreach ( $collections as $collection ) {

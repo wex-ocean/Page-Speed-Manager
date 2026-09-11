@@ -103,6 +103,10 @@ final class PSM_Admin {
 			array(
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 				'nonce'   => wp_create_nonce( self::NONCE_ACTION ),
+				'messages' => array(
+					'saved'     => __( 'Saved.', 'page-speed-manager' ),
+					'saveError' => __( 'Save failed.', 'page-speed-manager' ),
+				),
 			)
 		);
 	}
@@ -117,14 +121,14 @@ final class PSM_Admin {
 			wp_die( esc_html__( 'You do not have permission to access this page.', 'page-speed-manager' ) );
 		}
 
-		$tab = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : 'dashboard';
+		$tab  = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : 'dashboard';
 		$tabs = array( 'dashboard', 'page-rules', 'exclusions', 'cleanup' );
 
 		if ( ! in_array( $tab, $tabs, true ) ) {
 			$tab = 'dashboard';
 		}
 
-		$post_id = isset( $_GET['post_id'] ) ? absint( $_GET['post_id'] ) : 0;
+		$post_id = isset( $_GET['post_id'] ) ? absint( wp_unslash( $_GET['post_id'] ) ) : 0;
 		$view    = PSM_DIR . 'admin/views/' . $tab . '.php';
 		$rules   = $this->rules;
 		$scanner = $this->scanner;

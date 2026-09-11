@@ -89,13 +89,13 @@ final class PSM_Core {
 	 * Register core hooks.
 	 */
 	private function __construct() {
-		$this->compat = new PSM_Compat();
-		$this->scanner = new PSM_Scanner();
-		$this->rules   = new PSM_Rules();
+		$this->compat   = new PSM_Compat();
+		$this->scanner  = new PSM_Scanner();
+		$this->rules    = new PSM_Rules();
 		$this->optimizer = new PSM_Optimizer( $this->rules );
-		$this->cleanup = new PSM_Cleanup();
-		$this->admin   = new PSM_Admin( $this->rules, $this->scanner, $this->cleanup );
-		$this->ajax    = new PSM_Ajax( $this->rules, $this->cleanup );
+		$this->cleanup  = new PSM_Cleanup();
+		$this->admin    = new PSM_Admin( $this->rules, $this->scanner, $this->cleanup );
+		$this->ajax     = new PSM_Ajax( $this->rules, $this->cleanup );
 		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 	}
 

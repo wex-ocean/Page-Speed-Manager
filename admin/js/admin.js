@@ -2,6 +2,7 @@
 	'use strict';
 
 	var config = window.PSMAdmin || {};
+	var messages = config.messages || { saved: '', saveError: '' };
 
 	function showMessage(form, message, isError) {
 		var target = form.querySelector('.psm-form-message');
@@ -20,9 +21,9 @@
 			.then(function (response) { return response.json(); })
 			.then(function (payload) {
 				if (!payload.success) {
-					throw new Error(payload.data && payload.data.message ? payload.data.message : 'Save failed.');
+					throw new Error(payload.data && payload.data.message ? payload.data.message : messages.saveError);
 				}
-				showMessage(form, 'Saved.', false);
+				showMessage(form, messages.saved, false);
 			})
 			.catch(function (error) { showMessage(form, error.message, true); });
 	}
@@ -47,7 +48,7 @@
 				.then(function (payload) {
 					if (!payload.success) {
 						toggle.checked = !toggle.checked;
-						window.alert(payload.data && payload.data.message ? payload.data.message : 'Save failed.');
+						window.alert(payload.data && payload.data.message ? payload.data.message : messages.saveError);
 					}
 				})
 				.catch(function () { toggle.checked = !toggle.checked; });
