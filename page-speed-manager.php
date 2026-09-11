@@ -3,7 +3,7 @@
  * Plugin Name:       Page Speed Manager
  * Plugin URI:        https://wordpress.org/plugins/page-speed-manager/
  * Description:       Selectively manage page assets and lightweight WordPress features for better performance.
- * Version:           0.1.0
+ * Version:           1.0.0
  * Author:            DEV OCEEAN
  * Author URI:        https://oceean.dev/
  * License:           GPL-2.0-or-later
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PSM_VERSION', '0.1.0' );
+define( 'PSM_VERSION', '1.0.0' );
 define( 'PSM_FILE', __FILE__ );
 define( 'PSM_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PSM_URL', plugin_dir_url( __FILE__ ) );

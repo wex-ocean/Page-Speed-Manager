@@ -1,0 +1,21 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors and local tooling
+.idea/
+.vscode/
+*.code-workspace
+
+# Dependencies and generated artifacts
+vendor/
+node_modules/
+*.log
+coverage/
+phpunit.xml
+
+# Local environment files
+.env
+.env.*
+!.env.example

@@ -1,0 +1,199 @@
+# Copyright (C) 2026 Page Speed Manager Contributors
+# This file is distributed under the same license as the Page Speed Manager package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Page Speed Manager 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/page-speed-manager/\n"
+"Last-Translator: Page Speed Manager Contributors\n"
+"Language-Team: Language Team\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: includes/class-psm-admin.php:77 includes/class-psm-admin.php:78
+#: admin/views/cleanup.php:15 admin/views/dashboard.php:16
+#: admin/views/exclusions.php:15 admin/views/page-rules.php:26
+msgid "Page Speed Manager"
+msgstr ""
+
+#: includes/class-psm-admin.php:107
+msgid "Saved."
+msgstr ""
+
+#: includes/class-psm-admin.php:108
+msgid "Save failed."
+msgstr ""
+
+#: includes/class-psm-admin.php:121
+msgid "You do not have permission to access this page."
+msgstr ""
+
+#: includes/class-psm-ajax.php:122
+msgid "You are not allowed to do that."
+msgstr ""
+
+#: includes/class-psm-rules.php:182
+msgid "A valid post is required."
+msgstr ""
+
+#: includes/class-psm-rules.php:253
+msgid "A valid asset handle is required."
+msgstr ""
+
+#: includes/class-psm-rules.php:257
+msgid "This asset handle cannot be disabled."
+msgstr ""
+
+#: admin/views/cleanup.php:18
+msgid "Opt-in only"
+msgstr ""
+
+#: admin/views/cleanup.php:18
+msgid "Trim WordPress head output"
+msgstr ""
+
+#: admin/views/cleanup.php:22
+msgid "Independent toggle. Changes apply on the next front-end request."
+msgstr ""
+
+#: admin/views/cleanup.php:25
+msgid "Save cleanup settings"
+msgstr ""
+
+#: admin/views/dashboard.php:21
+msgid "Global controls"
+msgstr ""
+
+#: admin/views/dashboard.php:22
+msgid "Choose what the site may disable"
+msgstr ""
+
+#: admin/views/dashboard.php:27
+msgid "Disabled asset handles"
+msgstr ""
+
+#: admin/views/dashboard.php:28
+msgid "Enter handles separated by commas or spaces. Protected WordPress handles are always ignored."
+msgstr ""
+
+#: admin/views/dashboard.php:31
+msgid "Save global rules"
+msgstr ""
+
+#: admin/views/dashboard.php:39
+msgid "Site hygiene"
+msgstr ""
+
+#: admin/views/dashboard.php:40
+msgid "Cleanup snapshot"
+msgstr ""
+
+#: admin/views/dashboard.php:42
+msgid "Open cleanup"
+msgstr ""
+
+#: admin/views/dashboard.php:48
+msgid "On"
+msgstr ""
+
+#: admin/views/dashboard.php:48
+msgid "Off"
+msgstr ""
+
+#: admin/views/dashboard.php:58
+msgid "Save cleanup toggles"
+msgstr ""
+
+#: admin/views/exclusions.php:18
+msgid "Never touch"
+msgstr ""
+
+#: admin/views/exclusions.php:19
+msgid "Safe exclusions"
+msgstr ""
+
+#: admin/views/exclusions.php:20
+msgid "These handles are protected from optimizer rules. Core safety handles are always protected separately."
+msgstr ""
+
+#: admin/views/exclusions.php:22
+msgid "Excluded handles"
+msgstr ""
+
+#: admin/views/exclusions.php:24
+msgid "Save exclusions"
+msgstr ""
+
+#: admin/views/exclusions.php:26
+msgid "Always protected"
+msgstr ""
+
+#: admin/views/page-rules.php:32
+msgid "Per-page control"
+msgstr ""
+
+#: admin/views/page-rules.php:33
+msgid "Pages and posts"
+msgstr ""
+
+#: admin/views/page-rules.php:36
+msgid "Filter by title or type"
+msgstr ""
+
+#: admin/views/page-rules.php:36
+msgid "Filter pages and posts"
+msgstr ""
+
+#: admin/views/page-rules.php:40 admin/views/page-rules.php:50
+msgid "(no title)"
+msgstr ""
+
+#: admin/views/page-rules.php:48
+msgid "Select a page to inspect assets"
+msgstr ""
+
+#: admin/views/page-rules.php:48
+msgid "Choose a published page or post from the list."
+msgstr ""
+
+#: admin/views/page-rules.php:50
+msgid "View page"
+msgstr ""
+
+#: admin/views/page-rules.php:52
+msgid "No scan is cached yet. Visit this page once, then return here."
+msgstr ""
+
+#: admin/views/page-rules.php:54
+msgid "Toggle a handle to disable it on this page. Protected handles cannot be selected."
+msgstr ""
+
+#: admin/views/page-rules.php:55
+msgid "Scripts"
+msgstr ""
+
+#: admin/views/page-rules.php:55
+msgid "Styles"
+msgstr ""
+
+#: admin/views/partials/nav.php:13
+msgid "Dashboard"
+msgstr ""
+
+#: admin/views/partials/nav.php:14
+msgid "Page Rules"
+msgstr ""
+
+#: admin/views/partials/nav.php:15
+msgid "Exclusions"
+msgstr ""
+
+#: admin/views/partials/nav.php:16
+msgid "Cleanup"
+msgstr ""
+
+#: admin/views/partials/nav.php:19
+msgid "Page Speed Manager sections"
+msgstr ""
